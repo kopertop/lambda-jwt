@@ -1,0 +1,26 @@
+{
+  "name": "lambda-jwt",
+  "version": "0.0.1",
+  "description": "API Gateway Lambda function to support JSON Web Tokens",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kopertop/lambda-jwt.git"
+  },
+  "keywords": [
+    "Authentication",
+    "JWT",
+    "JSON",
+    "Lambda",
+    "AWS"
+  ],
+  "author": "Chris Moyer <cmoyer@aci.info>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kopertop/lambda-jwt/issues"
+  },
+  "homepage": "https://github.com/kopertop/lambda-jwt#readme"
+}

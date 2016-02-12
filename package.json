@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/kopertop/lambda-jwt/issues"
   },
-  "homepage": "https://github.com/kopertop/lambda-jwt#readme"
+  "homepage": "https://github.com/kopertop/lambda-jwt#readme",
+  "dependencies": {
+    "jsonwebtoken": "^5.5.4"
+  }
 }

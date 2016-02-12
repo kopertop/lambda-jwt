@@ -1,6 +1,6 @@
 {
   "name": "lambda-jwt",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "API Gateway Lambda function to support JSON Web Tokens",
   "main": "index.js",
   "scripts": {

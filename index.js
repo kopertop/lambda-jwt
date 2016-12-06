@@ -11,19 +11,24 @@ var jwt = require('jsonwebtoken');
 var fs = require('fs');
 var cert = fs.readFileSync('cert.pem');
 
-function generatePolicyDocument(principalId, effect, resource) {
-	var authResponse = {};
-	authResponse.principalId = principalId;
+function generatePolicyDocument(data, effect, resource) {
+	// Make data available to the authorizer
+	var authResponse = {
+		context: data,
+		principalId: data.id
+	};
+
 	if (effect && resource) {
-		var policyDocument = {};
-		policyDocument.Version = '2012-10-17'; // default version
-		policyDocument.Statement = [];
-		var statementOne = {};
-		statementOne.Action = 'execute-api:Invoke'; // default action
-		statementOne.Effect = effect;
-		statementOne.Resource = resource;
-		policyDocument.Statement[0] = statementOne;
-		authResponse.policyDocument = policyDocument;
+		authResponse.policyDocument = {
+			Version: '2012-10-17', // default version
+			Statement: [
+				{
+					Action: 'execute-api:Invoke', // default action
+					Effect: effect,
+					Resource: resource
+				}
+			]
+		};
 	}
 	return authResponse;
 }
@@ -43,7 +48,7 @@ exports.handler = function jwtHandler(event, context){
 				context.fail('Unauthorized');
 			} else if (data && data.id){
 				console.log('LOGIN', data);
-				context.succeed(generatePolicyDocument(data.id, 'Allow', event.methodArn));
+				context.succeed(generatePolicyDocument(data, 'Allow', event.methodArn));
 			} else {
 				console.log('Invalid User', data);
 				context.fail('Unauthorized');

@@ -22,8 +22,15 @@ Create or copy your public key as "cert.pem" in this folder.
 Run
 
 ```
+yarn install
+yarn run deploy
+```
+
+or
+
+```
 npm install
-grunt deploy --account-id=<your account id>
+npm run deploy-npm
 ```
 
 Tie this function to your AWS API Gateway
